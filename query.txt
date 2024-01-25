@@ -1,0 +1,53 @@
+                                    ----->        DJANGO ORM QUERIES        <-----
+
+---->Creating a Resource<----
+
+Book.objects.create(book_title="The Alchemist",ISBN_No=123,author_name="Paulo Coelho",year_of_publication=1988,price=220,publisher="Harper Torch",genre="Fantasy Fiction")
+Book.objects.create(book_title="The Girl on the Train",ISBN_No=334,author_name="Paula Hawkins",year_of_publication=2015,price=198,publisher="DreamWorks Pictures",genre="Thriller")
+Book.objects.create(book_title="Brida",ISBN_No=134,author_name="Paulo Coelho",year_of_publication=2008,price=208,publisher="HarperCollins",genre="Fiction")
+Book.objects.create(book_title="Wings of Fire",ISBN_No=101,author_name="APJ Abdul Kalam",year_of_publication=1999,price=300,publisher="Universities Press",genre="Autobiography")
+Book.objects.create(book_title="Ignited Minds",ISBN_No=111,author_name="APJ Abdul Kalam",year_of_publication=2002,price=300,publisher="Penguin Books Ltd",genre="Fiction")
+Book.objects.create(book_title="You are Born to Blossom",ISBN_No=110,author_name="APJ Abdul Kalam",year_of_publication=2010,price=300,publisher="Prabhat Prakashan",genre="Self-help Book")
+Book.objects.create(book_title="The Cost of Living",ISBN_No=130,author_name="Arundhati Roy",year_of_publication=1999,price=250,publisher="Arundhati Roy",genre="Autobiography")
+Book.objects.create(book_title="The God of Small Thing",ISBN_No=120,author_name="Arundhati Roy",year_of_publication=1997,price=250,publisher="Arundhati Roy",genre="Fiction")
+Book.objects.create(book_title="One Indian Girl",ISBN_No=190,author_name="Chetan Bhagat",year_of_publication=2016,price=250,publisher="Rupa & Co.",genre="Fiction")
+Book.objects.create(book_title="Half Girlfriend",ISBN_No=191,author_name="Chetan Bhagat",year_of_publication=2014,price=250,publisher="Rupa & Co.",genre="Romance")
+Book.objects.create(book_title="The Girl in Room 105",ISBN_No=192,author_name="Chetan Bhagat",year_of_publication=2018,price=290,publisher="WestLand Books",genre="Thriller")
+Book.objects.create(book_title="The Haunting of Hill House",ISBN_No=180,author_name="Shirley Jackson",year_of_publication=1959,price=250,publisher="Viking",genre="Horror")
+Book.objects.create(book_title="House of Flame and Shadow",ISBN_No=234,author_name="Sarah J Maas",year_of_publication=2024,price=300,publisher="New York Times",genre="Romance")
+Book.objects.create(book_title="Rebecca",ISBN_No=114,author_name="Daphne du Maurier",year_of_publication=1938,price=200,publisher="Victor Gollancz Ltd",genre="Mystery")
+Book.objects.create(book_title="The Hound of the Baskervilles",ISBN_No=144,author_name="Arthur Conan Doyle",year_of_publication=1902,price=350,publisher="George Newnes Ltd",genre="Detective Fiction")
+Book.objects.create(book_title="The Return of Sherlock Holmes",ISBN_No=145,author_name="Arthur Conan Doyle",year_of_publication=1905,price=350,publisher="George Newnes Ltd",genre="Detective Fiction")
+Book.objects.create(book_title="The Valley of Fear",ISBN_No=146,author_name="Arthur Conan Doyle",year_of_publication=1915,price=350,publisher="George H. Doran Company",genre="Detective Fiction")
+Book.objects.create(book_title="The Land of Mist",ISBN_No=148,author_name="Arthur Conan Doyle",year_of_publication=1926,price=200,publisher="Hutchinson & Co",genre="Science Fiction")
+Book.objects.create(book_title="The Poison Belt",ISBN_No=147,author_name="Arthur Conan Doyle",year_of_publication=1913,price=200,publisher="Hodder & Stoughton",genre="Science Fiction")
+Book.objects.create(book_title="Gone Girl",ISBN_No=117,author_name="Gillian Flynn",year_of_publication=2012,price=290,publisher="Crown Publishing Group",genre="Thriller")
+
+---->Viewing all data<----
+
+qs=Book.objects.all()
+qs
+
+---->Viewing similar data<----
+qs=Book.objects.filter(genre="Fiction")
+
+---->Viewing a single data<----
+qs=Book.objects.get(id=8)
+
+---->Updating a Book Detail<----
+Book.objects.filter(ISBN_No=130).update(publisher="Modern Library")
+Book.objects.filter(id=8).update(publisher="Modern Library")
+Book.objects.filter(ISBN_No=111).update(genre="Fiction")
+
+---->Updating a Book Detail<----
+Book.objects.filter(id=6).delete()
+
+---->Field Lookup of a Book Detail<----
+qs=Book.objects.filter(year_of_publication__gte=1990,year_of_publication__lte=2024)
+qs
+
+---->Excluding a Book Detail<----
+Book.objects.exclude(year_of_publication=2024)
+
+---->Listing all Genere<----
+Book.objects.all().values_list("genre",flat=True).distinct()

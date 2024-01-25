@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10 p-3 border border-3 shadow">
+                <a href="{%url 'book-add'%}">Add a Book</a>
+                <table class="table table-secondary table-bordered table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>ISBN_No</th>
+                        <th>Author</th>
+                        <th>Year of Publication</th>
+                        <th>Publisher</th>
+                        <th>Genre</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    {%for m in data%}
+                        <tr>
+                            <td>{{m.book_title}}</td>
+                            <td>{{m.ISBN_No}}</td>
+                            <td>{{m.author_name}}</td>
+                            <td>{{m.year_of_publication}}</td>
+                            <td>{{m.publisher}}</td>
+                            <td>{{m.genre}}</td>
+                            <td>{{m.price}}</td>
+                            <td>
+                                <a href="{%url 'book-detail' m.id%}" class="btn btn-outline-info">View</a>
+                                <a href="{%url 'book-delete' m.id%}" class="btn btn-outline-danger">Delete</a>
+                                <a href="{%url 'book-edit' m.id%}" class="btn btn-outline-warning">Edit</a>
+                            </td>
+                            
+                    {%endfor%}
+                        </tr>
+
+                </table> 
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+    </div>
+</body>
+</html>
